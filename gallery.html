@@ -301,14 +301,14 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="soccer-school.html" class="logo">Shkolla e Futbollit Avdurri</a>
+            <a href="index.html" class="logo">Shkolla e Futbollit Avdurri</a>
             <button class="mobile-menu-btn">☰</button>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="soccer-school.html" class="nav-link">Shkolla e Futbollit</a>
+                    <a href="index.html" class="nav-link">Shkolla e Futbollit</a>
                 </li>
                 <li class="nav-item">
-                    <a href="gallery.html" class="nav-link active">Galleria</a>
+                    <a href="gallery.html" class="nav-link">Galleria</a>
                 </li>
                 <li class="nav-item">
                     <a href="about.html" class="nav-link">Rreth Nesh</a>
@@ -508,49 +508,11 @@
                 const dot = document.createElement('span');
                 dot.className = `dot ${index === currentSlideIndex ? 'active' : ''}`;
                 dot.onclick = () => {
-                    currentSlideIndex = index;
-                    document.getElementById('lightbox-img').src = images[currentSlideIndex].src;
-                    updateDots();
+                    changeSlide(index - currentSlideIndex);
                 };
                 dotsContainer.appendChild(dot);
             });
         }
-
-        // Close lightbox when clicking outside the image
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            const lightbox = document.getElementById('lightbox');
-            if (lightbox.style.display === 'block') {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                } else if (e.key === 'ArrowLeft') {
-                    changeSlide(-1);
-                } else if (e.key === 'ArrowRight') {
-                    changeSlide(1);
-                }
-            }
-        });
-
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navMenu = document.querySelector('.nav-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-container')) {
-                navMenu.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-            }
-        });
     </script>
 </body>
-</html> 
+</html>
