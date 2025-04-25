@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shkolla e Futbollit Avdurri</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" media="print" onload="this.media='all'">
+    <style>
+        /* Critical CSS - Move non-critical styles to external file */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 62, 80, 0.95);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e74c3c;
+        }
+
+        .nav-link.active {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn.active {
+            transform: rotate(90deg);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(44, 62, 80, 0.95);
+                padding: 2rem;
+                flex-direction: column;
+                gap: 1.5rem;
+                justify-content: center;
+                align-items: center;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-menu.active {
+                display: flex;
+                transform: translateY(0);
+            }
+
+            .nav-item {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 1rem;
+                font-size: 1.2rem;
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-link:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .nav-link.active {
+                background: #e74c3c;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+
+        .header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #e74c3c;
+        }
+
+        .gallery {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            aspect-ratio: 16/9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            background: #fff;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .testimonials {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+            }
+
+            .features, .gallery, .testimonials {
+                padding: 40px 20px;
+            }
+        }
+
+        .instagram-media {
+            width: 100% !important;
+            min-width: 100% !important;
+        }
+
+        .instagram-embed {
+            width: 100%;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            filter: none;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .prev-btn, .next-btn {
+            cursor: pointer;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+        }
+
+        .prev-btn:hover, .next-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .show-more-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .show-more-btn {
+            padding: 12px 30px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .show-more-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .show-more-btn:active {
+            transform: translateY(0);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="soccer-school.html" class="logo">Shkolla e Futbollit Avdurri</a>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="soccer-school.html" class="nav-link">Shkolla e Futbollit</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link">Galleria</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">Rreth Nesh</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Na Kontaktoni</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="header">
+        <div class="slideshow">
+            <div class="slide active" style="background-image: url('images/shf_avdurri_1607621355_2461228777687438254_44778524713.jpg')"></div>
+            <div class="slide" style="background-image: url('images/shf_avdurri_1607621355_2461228777670692955_44778524713.jpg')"></div>
+            <div class="slide" style="background-image: url('images/shf_avdurri_1607621355_2461228777653746847_44778524713.jpg')"></div>
+            <div class="slide" style="background-image: url('images/shf_avdurri_1607621355_2461228777636894338_44778524713.jpg')"></div>
+            <div class="slide" style="background-image: url('images/shf_avdurri_1607617537_2461196746349849219_44778524713.jpg')"></div>
+        </div>
+        <div class="header-content">
+            <h1>Shkolla e Futbollit Avdurri</h1>
+            <p>Ku talentet e reja fillojnë udhëtimin e tyre drejt madhështisë!</p>
+            <a href="register.html" class="cta-button">Regjistrohu Tani</a>
+        </div>
+    </header>
+
+    <div class="features">
+        <h2>Pse të na zgjidhni ne?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚽</div>
+                <h3>Trajnerë të Kualifikuar</h3>
+                <p>Staf me përvojë dhe licencuar për trajnimin e futbollistëve të rinj</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Program i Përshtatur</h3>
+                <p>Trajnime të personalizuara sipas nivelit dhe moshës së futbollistëve</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌟</div>
+                <h3>Infrastrukturë Moderne</h3>
+                <p>Fusha dhe pajisje të përshtatshme për trajnime të sigurta dhe efektive</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonials">
+        <h2>Çfarë thonë prindërit</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Djali im ka përmirësuar shumë aftësitë e tij falë trajnimeve të përditshme dhe kujdesit të trajnerëve."</p>
+                <p class="testimonial-author">- Prindi i një futbollisti</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Atmosfera është e shkëlqyer dhe stafi është shumë profesional. Rekomandoj me gjithë zemër!"</p>
+                <p class="testimonial-author">- Prindi i një futbolliste</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Na Kontaktoni</h3>
+                <ul>
+                    <li>Doganaj, Market Deda, Kaqanik</li>
+                    <li>Telefoni: (069) 123-4567</li>
+                    <li>Email: info@shf-avdurri.com</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Programet</h3>
+                <ul>
+                    <li><a href="bambinet.html">Bambinët U9 (6-8 vjeç)</a></li>
+                    <li><a href="parafatoset.html">Parafatosët U11 (9-11 vjeç)</a></li>
+                    <li><a href="fatoset.html">Fatosët U13 (12-13 vjeç)</a></li>
+                    <li><a href="pioneret.html">Pionerët U15 (14-15 vjeç)</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Lidhje të Shpejta</h3>
+                <ul>
+                    <li><a href="#">Orari</a></li>
+                    <li><a href="#">Pyetjet e Shpeshta</a></li>
+                    <li><a href="#">Galleria</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Optimize image loading
+        function loadImage(img) {
+            if (img.dataset.src) {
+                img.src = img.dataset.src;
+                img.onload = () => {
+                    img.classList.remove('loading');
+                    img.classList.add('loaded');
+                };
+            }
+        }
+
+        // Intersection Observer for lazy loading
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.onload = () => {
+                        img.classList.remove('loading');
+                        img.classList.add('loaded');
+                    };
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        // Initialize lazy loading for gallery images
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('.gallery-item img');
+            images.forEach(img => {
+                img.classList.add('loading');
+                imageObserver.observe(img);
+            });
+
+            // Initialize gallery
+            initializeGallery();
+        });
+
+        // Optimize slideshow
+        let slideInterval;
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Start slideshow when page is visible
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                clearInterval(slideInterval);
+            } else {
+                slideInterval = setInterval(nextSlide, 3000);
+            }
+        });
+
+        // Initialize slideshow
+        showSlide(0);
+        slideInterval = setInterval(nextSlide, 3000);
+
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        let currentSlideIndex = 0;
+        let images = []; // Will store all gallery images
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container')) {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            }
+        });
+
+        function updateImagesArray() {
+            images = Array.from(document.querySelectorAll('.gallery-item img'));
+        }
+
+        function openLightbox(img) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            updateImagesArray();
+            
+            lightbox.style.display = 'block';
+            lightboxImg.src = img.src;
+            currentSlideIndex = images.indexOf(img);
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+        }
+
+        function changeSlide(n) {
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            updateImagesArray();
+            
+            currentSlideIndex += n;
+            if (currentSlideIndex >= images.length) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex < 0) {
+                currentSlideIndex = images.length - 1;
+            }
+            lightboxImg.src = images[currentSlideIndex].src;
+        }
+
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.style.display === 'block') {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    changeSlide(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeSlide(1);
+                }
+            }
+        });
+
+        // Additional images data
+        const additionalImages = [
+            {
+                src: "images/shf_avdurri_1607621355_2461228777687438254_44778524713.jpg",
+                alt: "SHF Avduri Training",
+                caption: "Sesion Trajnimi"
+            },
+            {
+                src: "images/shf_avdurri_1607621355_2461228777670692955_44778524713.jpg",
+                alt: "SHF Avduri Match",
+                caption: "Dita e Ndeshjes"
+            },
+            {
+                src: "images/shf_avdurri_1607621355_2461228777653746847_44778524713.jpg",
+                alt: "SHF Avduri Team",
+                caption: "Foto e Ekipit"
+            },
+            {
+                src: "images/shf_avdurri_1607621355_2461228777636894338_44778524713.jpg",
+                alt: "SHF Avduri Skills",
+                caption: "Trajnim i Aftësive"
+            },
+            {
+                src: "images/shf_avdurri_1607617537_2461196746349849219_44778524713.jpg",
+                alt: "SHF Avduri Celebration",
+                caption: "Festim i Ekipit"
+            },
+            {
+                src: "images/shf_avdurri_1607621355_2461228777645357422_44778524713.jpg",
+                alt: "SHF Avduri Practice",
+                caption: "Sesion Ushtrimesh"
+            },
+            {
+                src: "images/shf_avdurri_1607621355_2461228777653908832_44778524713.jpg",
+                alt: "SHF Avduri Training 2",
+                caption: "Team Training"
+            },
+            {
+                src: "images/shf_avdurri_1607621355_2461228777679076841_44778524713.jpg",
+                alt: "SHF Avduri Match 2",
+                caption: "Match Action"
+            },
+            {
+                src: "images/shf_avdurri_1607621355_2461228777611830018_44778524713.jpg",
+                alt: "SHF Avduri Team 2",
+                caption: "Team Spirit"
+            },
+            {
+                src: "images/shf_avdurri_1618679506_2553991268913325866_44778524713.jpg",
+                alt: "SHF Avduri Skills 2",
+                caption: "Skill Development"
+            }
+        ];
+
+        let currentBatch = 0;
+        const batchSize = 6;
+
+        function showMoreImages() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            const showMoreBtn = document.querySelector('.show-more-btn');
+            
+            const startIndex = currentBatch * batchSize;
+            const endIndex = Math.min(startIndex + batchSize, additionalImages.length);
+            
+            const fragment = document.createDocumentFragment();
+            
+            for (let i = startIndex; i < endIndex; i++) {
+                const image = additionalImages[i];
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <img src="${image.src}" alt="${image.alt}" onclick="openLightbox(this)">
+                    <div class="gallery-overlay">
+                        <p>${image.caption}</p>
+                    </div>
+                `;
+                fragment.appendChild(galleryItem);
+            }
+            
+            galleryGrid.appendChild(fragment);
+            updateImagesArray();
+            currentBatch++;
+            
+            if (endIndex >= additionalImages.length) {
+                showMoreBtn.style.display = 'none';
+            }
+        }
+
+        function initializeGallery() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryGrid.innerHTML = '';
+            
+            for (let i = 0; i < 4; i++) {
+                const image = additionalImages[i];
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <img src="${image.src}" alt="${image.alt}" onclick="openLightbox(this)">
+                    <div class="gallery-overlay">
+                        <p>${image.caption}</p>
+                    </div>
+                `;
+                galleryGrid.appendChild(galleryItem);
+            }
+            
+            updateImagesArray();
+        }
+    </script>
+
+    <!-- Instagram Embed Script -->
+    <script async src="//www.instagram.com/embed.js"></script>
+    <!-- Defer non-critical scripts -->
+    <script src="gallery.js" defer></script>
+    <script src="mobile-menu.js" defer></script>
+</body>
+</html> 

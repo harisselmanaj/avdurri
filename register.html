@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regjistrimi - Shkolla e Futbollit Avdurri</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 62, 80, 0.95);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e74c3c;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .registration-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .training-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid #e74c3c;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .select-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .select-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .option-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+
+        .option-card .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .option-card ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .option-card ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .option-card ul li:before {
+            content: "✓";
+            color: #e74c3c;
+            position: absolute;
+            left: 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .submit-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .note {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .training-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="soccer-school.html" class="logo">Shkolla e Futbollit Avdurri</a>
+            <ul class="nav-menu">
+                <li><a href="soccer-school.html" class="nav-link">Shkolla e Futbollit</a></li>
+                <li><a href="gallery.html" class="nav-link">Galleria</a></li>
+                <li><a href="about.html" class="nav-link">Rreth Nesh</a></li>
+                <li><a href="contact.html" class="nav-link">Na Kontaktoni</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="registration-form">
+            <h1 style="text-align: center; margin-bottom: 2rem;">Regjistrohu për Trajnime</h1>
+            
+            <div class="training-options">
+                <div class="option-card">
+                    <h3>Trajnim Individual</h3>
+                    <div class="price">10€/sesion</div>
+                    <ul>
+                        <li>Trajnim personalizuar</li>
+                        <li>Orar fleksibël</li>
+                        <li>Përqendrim në aftësi specifike</li>
+                        <li>Trajner personal</li>
+                        <li>Përmirësim i shpejtë</li>
+                    </ul>
+                    <a href="register-individual.html" class="select-btn">Zgjidh Individual</a>
+                </div>
+
+                <div class="option-card">
+                    <h3>Trajnim në Grup</h3>
+                    <div class="price">20€/muaj</div>
+                    <ul>
+                        <li>Trajnim në grup</li>
+                        <li>Orar i rregullt</li>
+                        <li>Punë në ekip</li>
+                        <li>Trajnerë të kualifikuar</li>
+                        <li>Atmosferë shoqërore</li>
+                    </ul>
+                    <a href="register-group.html" class="select-btn">Zgjidh Grupor</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const individualCard = document.getElementById('individualCard');
+            const groupCard = document.getElementById('groupCard');
+            const individualRadio = document.getElementById('individual');
+            const groupRadio = document.getElementById('group');
+            const individualOptions = document.getElementById('individualOptions');
+            const groupOptions = document.getElementById('groupOptions');
+            const registrationForm = document.getElementById('registrationForm');
+
+            function selectCard(card, radio) {
+                individualCard.classList.remove('selected');
+                groupCard.classList.remove('selected');
+                card.classList.add('selected');
+                radio.checked = true;
+            }
+
+            function showRegistrationForm() {
+                registrationForm.classList.remove('hidden');
+            }
+
+            individualCard.addEventListener('click', function() {
+                selectCard(this, individualRadio);
+                individualOptions.classList.remove('hidden');
+                groupOptions.classList.add('hidden');
+                showRegistrationForm();
+            });
+
+            groupCard.addEventListener('click', function() {
+                selectCard(this, groupRadio);
+                groupOptions.classList.remove('hidden');
+                individualOptions.classList.add('hidden');
+                showRegistrationForm();
+            });
+
+            // Handle form submission
+            const form = document.querySelector('.registration-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Regjistrimi u dërgua me sukses! Do të ju kontaktojmë së shpejti.');
+                form.reset();
+                individualOptions.classList.add('hidden');
+                groupOptions.classList.add('hidden');
+                registrationForm.classList.add('hidden');
+                individualCard.classList.remove('selected');
+                groupCard.classList.remove('selected');
+            });
+        });
+    </script>
+</body>
+</html> 

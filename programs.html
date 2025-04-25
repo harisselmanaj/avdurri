@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programet dhe Çmimet - Shkolla e Futbollit Avdurri</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 62, 80, 0.95);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e74c3c;
+        }
+
+        .nav-link.active {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #34495e;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .program-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .program-card h2 {
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .program-card .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .program-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .program-card ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .program-card ul li:before {
+            content: "✓";
+            color: #e74c3c;
+            position: absolute;
+            left: 0;
+        }
+
+        .register-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .register-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .schedule {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        .schedule h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .schedule-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .content {
+                margin-top: 80px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .schedule-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="soccer-school.html" class="logo">Shkolla e Futbollit Avdurri</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="soccer-school.html" class="nav-link">Shkolla e Futbollit</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link">Galleria</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">Rreth Nesh</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Na Kontaktoni</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="header">
+            <h1>Programet dhe Çmimet</h1>
+            <p>Zgjidhni programin që ju përshtatet më së miri</p>
+        </div>
+
+        <div class="programs-grid">
+            <div class="program-card">
+                <h2>Bambinët U9</h2>
+                <div class="price">20€/muaj</div>
+                <ul>
+                    <li>Mosha: 6-8 vjeç</li>
+                    <li>3 trajnime në javë</li>
+                    <li>Trajnerë të kualifikuar</li>
+                    <li>Pajisje profesionale</li>
+                    <li>Siguri dhe kujdes maksimal</li>
+                </ul>
+                <a href="register.html" class="register-btn">Regjistrohu</a>
+            </div>
+
+            <div class="program-card">
+                <h2>Parafatosët U11</h2>
+                <div class="price">20€/muaj</div>
+                <ul>
+                    <li>Mosha: 9-11 vjeç</li>
+                    <li>3 trajnime në javë</li>
+                    <li>Trajnerë të kualifikuar</li>
+                    <li>Pajisje profesionale</li>
+                    <li>Zhvillim i aftësive bazë</li>
+                </ul>
+                <a href="register.html" class="register-btn">Regjistrohu</a>
+            </div>
+
+            <div class="program-card">
+                <h2>Fatosët U13</h2>
+                <div class="price">20€/muaj</div>
+                <ul>
+                    <li>Mosha: 12-13 vjeç</li>
+                    <li>3 trajnime në javë</li>
+                    <li>Trajnerë të kualifikuar</li>
+                    <li>Pajisje profesionale</li>
+                    <li>Përgatitje për ndeshje</li>
+                </ul>
+                <a href="register.html" class="register-btn">Regjistrohu</a>
+            </div>
+
+            <div class="program-card">
+                <h2>Pionerët U15</h2>
+                <div class="price">20€/muaj</div>
+                <ul>
+                    <li>Mosha: 14-15 vjeç</li>
+                    <li>3 trajnime në javë</li>
+                    <li>Trajnerë të kualifikuar</li>
+                    <li>Pajisje profesionale</li>
+                    <li>Përgatitje për nivel të lartë</li>
+                </ul>
+                <a href="register.html" class="register-btn">Regjistrohu</a>
+            </div>
+        </div>
+
+        <div class="schedule">
+            <h2>Orari i Trajnimeve</h2>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Grupmosha</th>
+                        <th>Ditët</th>
+                        <th>Koha</th>
+                        <th>Vendi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bambinët U9</td>
+                        <td>E Hënë, E Mërkurë, E Premte</td>
+                        <td>18:00 - 19:30</td>
+                        <td>Qendra Sportive Deda</td>
+                    </tr>
+                    <tr>
+                        <td>Parafatosët U11</td>
+                        <td>E Hënë, E Mërkurë, E Premte</td>
+                        <td>18:00 - 19:30</td>
+                        <td>Qendra Sportive Deda</td>
+                    </tr>
+                    <tr>
+                        <td>Fatosët U13</td>
+                        <td>E Hënë, E Mërkurë, E Premte</td>
+                        <td>17:00 - 18:30</td>
+                        <td>Qendra Sportive Deda</td>
+                    </tr>
+                    <tr>
+                        <td>Pionerët U15</td>
+                        <td>E Hënë, E Mërkurë, E Premte</td>
+                        <td>17:00 - 18:30</td>
+                        <td>Qendra Sportive Deda</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html> 

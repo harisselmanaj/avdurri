@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trajnim Individual - Shkolla e Futbollit Avdurri</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 62, 80, 0.95);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e74c3c;
+        }
+
+        .nav-link.active {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #34495e;
+        }
+
+        .info-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .info-section h2 {
+            color: #e74c3c;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .schedule {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .schedule-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .schedule-item h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .schedule-item p {
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #c0392b;
+        }
+
+        .time-slots {
+            margin-top: 20px;
+        }
+
+        .time-slot {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .content {
+                margin-top: 80px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .schedule {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="soccer-school.html" class="logo">Shkolla e Futbollit Avdurri</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="soccer-school.html" class="nav-link">Shkolla e Futbollit</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link">Galleria</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">Rreth Nesh</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Na Kontaktoni</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="header">
+            <h1>Trajnim Individual</h1>
+            <p>Regjistrohu për trajnime individuale me trajnerët tanë të kualifikuar</p>
+        </div>
+
+        <div class="info-section">
+            <h2>Orari i Disponueshëm</h2>
+            <div class="schedule">
+                <div class="schedule-item">
+                    <h3>E Hënë, E Mërkurë, E Premte</h3>
+                    <p>Ora: 07:00 - 08:00</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>E Martë, E Enjte, E Shtunë</h3>
+                    <p>Ora: 16:00 - 18:00</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>Regjistrohu për Trajnim</h2>
+            <form id="trainingForm">
+                <div class="form-group">
+                    <label for="name">Emri dhe Mbiemri</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Numri i Telefonit</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Mosha</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="days">Ditët e preferuara</label>
+                    <select id="days" name="days" multiple required>
+                        <option value="monday">E Hënë</option>
+                        <option value="tuesday">E Martë</option>
+                        <option value="wednesday">E Mërkurë</option>
+                        <option value="thursday">E Enjte</option>
+                        <option value="friday">E Premte</option>
+                        <option value="saturday">E Shtunë</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="times">Orari i preferuar</label>
+                    <select id="times" name="times" required>
+                        <option value="morning">07:00 - 08:00</option>
+                        <option value="afternoon">16:00 - 18:00</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mesazh shtesë (opsionale)</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Dërgo Aplikimin</button>
+            </form>
+        </div>
+
+        <div class="info-section">
+            <h2>Informacione shtesë</h2>
+            <p>Trajnimet individuale zhvillohen nën drejtimin e trajnerëve tanë të kualifikuar.</p>
+            <p>Çmimi për trajnim individual është 20€ për orë.</p>
+            <p>Për më shumë informacione, ju lutemi na kontaktoni.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('trainingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Aplikimi juaj u dërgua me sukses! Do t\'ju kontaktojmë së shpejti.');
+            this.reset();
+        });
+    </script>
+</body>
+</html> 

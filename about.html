@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rreth Nesh - Shkolla e Futbollit Avdurri</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 62, 80, 0.95);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e74c3c;
+        }
+
+        .nav-link.active {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-btn.active {
+            transform: rotate(90deg);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 100px auto 0;
+            padding: 40px 20px;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .about-header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-section {
+            margin-bottom: 30px;
+        }
+
+        .about-section h2 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .about-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .trainer-profile {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-top: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .trainer-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #e74c3c;
+        }
+
+        .trainer-info {
+            flex: 1;
+        }
+
+        .trainer-info h3 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .trainer-info p {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .trainer-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .trainer-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(44, 62, 80, 0.95);
+                padding: 2rem;
+                flex-direction: column;
+                gap: 1.5rem;
+                justify-content: center;
+                align-items: center;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-menu.active {
+                display: flex;
+                transform: translateY(0);
+            }
+
+            .nav-item {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 1rem;
+                font-size: 1.2rem;
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-link:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .nav-link.active {
+                background: #e74c3c;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="soccer-school.html" class="logo">Shkolla e Futbollit Avdurri</a>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="soccer-school.html" class="nav-link">Shkolla e Futbollit</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link">Galleria</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link active">Rreth Nesh</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Na Kontaktoni</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="about-container">
+        <div class="about-header">
+            <h1>Rreth Nesh</h1>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-section">
+                <h2>Historia Jonë</h2>
+                <p>Shkolla e Futbollit Avdurri u themelua me një vizion të qartë: të krijojë një mjedis ku fëmijët mund të zhvillojnë jo vetëm aftësitë e tyre futbollistike, por edhe të rriten si individë të plotë. Që nga themelimi i saj, shkolla ka qenë një vend ku talenti, përkushtimi dhe kënaqësia bashkohen për të krijuar një përvojë të veçantë për çdo fëmijë.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Misioni Ynë</h2>
+                <p>Misioni ynë është të inkurajojmë dhe zhvillojmë talentet e reja të futbollit, duke ofruar një program të përshtatur për grupmosha të ndryshme. Ne besojmë se çdo fëmijë ka potencialin për të shkëlqyer, dhe roli ynë është të ndihmojmë në zhvillimin e këtij potenciali nëpërmjet trajnimit profesional, mjedisit të sigurt dhe atmosferës pozitive.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Metodologjia Jonë</h2>
+                <p>Ne përdorim një qasje të përbërë që përqendrohet në zhvillimin e aftësive bazë të futbollit, punën në ekip dhe zhvillimin personal. Programet tona janë të dizajnuara për të inkurajuar mësimin nëpërmjet lojës, duke siguruar që çdo sesion të jetë jo vetëm edukativ, por edhe argëtues për fëmijët.</p>
+            </div>
+
+            <div class="trainer-profile">
+                <img src="images/nehat_pp.jpg" alt="Nehat Selmanaj" class="trainer-image">
+                <div class="trainer-info">
+                    <h3>Nehat Selmanaj</h3>
+                    <p>Nehat Selmanaj është trajneri kryesor dhe themeluesi i Shkollës së Futbollit Avdurri. Me më shumë se 15 vjet përvojë në trajnimin e fëmijëve, ai ka zhvilluar një qasje unike që kombinon teknikat moderne të trajnimit me një kuptim të thellë të zhvillimit të fëmijëve.</p>
+                    <p>Përveç përvojës së tij të gjerë në futboll, Nehat ka një diplomë në Edukim Fizik dhe është i certifikuar nga federatat ndërkombëtare të futbollit. Ai beson në fuqinë e futbollit për të ndihmuar fëmijët të zhvillojnë jo vetëm aftësi fizike, por edhe cilësi të rëndësishme të jetës si besimi në vetvete, puna në ekip dhe disiplina.</p>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Përse të Na Zgjidhni</h2>
+                <p>Në Shkollën e Futbollit Avdurri, ne ofrojmë një përvojë të plotë për fëmijët tuaj. Me trajnerë të kualifikuar, objekte moderne dhe një qasje të personalizuar ndaj trajnimit, ne jemi të përkushtuar për të ndihmuar çdo fëmijë të arrijë potencialin e tij maksimal, si në fushë ashtu edhe jashtë saj.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container')) {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html> 

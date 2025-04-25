@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bambinët U9 - Shkolla e Futbollit Avdurri</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 62, 80, 0.95);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e74c3c;
+        }
+
+        .nav-link.active {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #34495e;
+        }
+
+        .info-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .info-section h2 {
+            color: #e74c3c;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .schedule {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .schedule-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .schedule-item h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .schedule-item p {
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+
+        .coach-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .coach-info img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .coach-details h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .coach-details p {
+            color: #34495e;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .content {
+                margin-top: 80px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .schedule {
+                grid-template-columns: 1fr;
+            }
+
+            .coach-info {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="soccer-school.html" class="logo">Shkolla e Futbollit Avdurri</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="soccer-school.html" class="nav-link">Shkolla e Futbollit</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link">Galleria</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">Rreth Nesh</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Na Kontaktoni</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="header">
+            <h1>Bambinët U9 (6-8 vjeç)</h1>
+            <p>Programi i trajnimit për futbollistët tanë më të rinj</p>
+        </div>
+
+        <div class="info-section">
+            <h2>Orari i Stërvitjeve</h2>
+            <div class="schedule">
+                <div class="schedule-item">
+                    <h3>E Hënë</h3>
+                    <p>Ora: 18:00 - 19:00</p>
+                    <p>Vendi: Qendra Sportive Deda</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>E Mërkurë</h3>
+                    <p>Ora: 18:00 - 19:00</p>
+                    <p>Vendi: Qendra Sportive Deda</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>E Premte</h3>
+                    <p>Ora: 18:00 - 19:00</p>
+                    <p>Vendi: Qendra Sportive Deda</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>Informacione shtesë</h2>
+            <p>Bambinët stërviten bashkë me Parafatosët për një kohë të shkurtër gjatë stërvitjeve.</p>
+            <p>Minimumi 1 ndeshje në muaj.</p>
+            <p>Stërvitjet zhvillohen nën drejtimin e trajnerit Nehat Selmanaj.</p>
+        </div>
+
+        <div class="info-section">
+            <h2>Trajneri</h2>
+            <div class="coach-info">
+                <img src="images/nehat_selmanaj.jpg" alt="Nehat Selmanaj">
+                <div class="coach-details">
+                    <h3>Nehat Selmanaj</h3>
+                    <p>Trajner i Licencuar</p>
+                    <p>Përvojë: 10+ vjet në trajnimin e futbollistëve të rinj</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
